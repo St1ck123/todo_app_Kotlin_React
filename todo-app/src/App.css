@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Golos+Text:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Golos Text', sans-serif;
+    background-image: url('/src/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #111;
+}
+
+/* инпут для новой задачи */
+
+.todo-input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-family: 'Golos Text', sans-serif;
+    border: 3px solid #111;
+    border-radius: 0;
+    background: #f7f9fc;
+    color: #111;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.todo-input:focus {
+    border-color: #1a8cff;
+    box-shadow: 3px 3px 0 #1a8cff44;
+}
+
+/* все кнопки */
+
+.todo-btn {
+    padding: 10px 20px;
+    background-color: #1a8cff;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0 #111;
+    transition: transform 0.1s, box-shadow 0.1s;
+    letter-spacing: 0;
+}
+
+.todo-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #111;
+}
+
+.todo-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #111;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: #f0f4f8;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0 #111;
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-bottom: 19px;
+}
+
+.back-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #111;
+}
+
+.back-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #111;
+}
+
+.delete-btn {
+    padding: 10px 20px;
+    background: #e53935;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0 #111;
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #111;
+}
+
+.delete-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #111;
+}
+
+.page-btn {
+    padding: 10px 20px;
+    background: #111;
+    color: #fff;
+    border: 3px solid #111;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0 #1a8cff;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.page-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #1a8cff;
+}
+
+.page-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #1a8cff;
+}
+
+.page-btn:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* основа */
+
+.todo-container {
+    max-width: 660px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 0;
+    border: 3px solid #111;
+    box-shadow: 6px 6px 0 #111;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: left;
+    color: #111;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #111;
+    padding-bottom: 16px;
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 3px solid #111;
+    padding-bottom: 16px;
+}
+
+.todo-header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.5px;
+}
+
+/* задачи */
+
+.todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 2px solid #e5e9ef;
+    transition: background 0.15s;
+    min-height: 60px;
+}
+
+.todo-item:hover {
+    background: #f7f9fc;
+    padding-left: 6px;
+}
+
+.todo-item-checkbox {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: #1a8cff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.todo-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.todo-item-title {
+    font-size: 18px;
+    font-weight: 1000;
+    color: #111;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.todo-item-title:hover {
+    color: #1a8cff;
+}
+
+.todo-item-desc {
+    font-size: 13px;
+    color: #666;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.todo-item-badge {
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    border: 2px solid;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.todo-item-badge.done {
+    color: #1a8cff;
+    border-color: #1a8cff;
+    background: #e8f3ff;
+}
+
+.todo-item-badge.pending {
+    color: #e53935;
+    border-color: #e53935;
+    background: #fff0f0;
+}
+
+/* кнопки внизу */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 3px solid #111;
+}
+
+.page-info {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* всплывающее окно  */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal {
+    background: white;
+    padding: 32px;
+    border: 3px solid #111;
+    box-shadow: 8px 8px 0 #111;
+    border-radius: 0;
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    border-bottom: 2px solid #111;
+    padding-bottom: 12px;
+}
+
+.modal-label {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+}
+
+.modal-buttons .todo-btn,
+.modal-buttons .back-btn {
+    flex: 1;
+    height: 48px;
+    padding: 0;
+    text-align: center;
+    font-size: 13px;
+    line-height: 48px;
+}
+
+/* детали задачи */
+
+.detail-container {
+    max-width: 660px;
+    margin: 40px auto;
+    padding: 32px;
+    background: white;
+    border: 3px solid #111;
+    box-shadow: 6px 6px 0 #111;
+    border-radius: 0;
+}
+
+.detail-container h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #111;
+    padding-bottom: 14px;
+    text-align: center;
+}
+
+.detail-desc {
+    padding: 14px 0;
+    border-bottom: 2px solid #e5e9ef;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.detail-no-desc {
+    font-style: italic;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.detail-toggle {
+    display: block;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-checkbox-inner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #111;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 3px 3px 0 #111;
+    transition: background 0.15s, box-shadow 0.1s;
+    flex-shrink: 0;
+}
+
+.custom-checkbox-inner.checked {
+    background: #1a8cff;
+    color: white;
+    box-shadow: 3px 3px 0 #0057b3;
+}
+
+.detail-status {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 2px solid;
+}
+
+.detail-status.done {
+    color: #1a8cff;
+    border-color: #1a8cff;
+    background: #e8f3ff;
+}
+
+.detail-status.pending {
+    color: #e53935;
+    border-color: #e53935;
+    background: #fff0f0;
+}
+
+.detail-edit {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.detail-edit-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.detail-edit-buttons .todo-btn,
+.detail-edit-buttons .back-btn {
+    flex: 1;
+    height: 48px;
+    padding: 0;
+    text-align: center;
+    line-height: 48px;
+}
