@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE — IntelliJ / VS Code
+.idea/
+.vscode/
+*.iml
+
+# Переменные окружения
+.env
+!.env.example
+
+# Логи
+*.log
+npm-debug.log*
