@@ -1,6 +1,8 @@
 package com.example.todobackend
 
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
+import org.springframework.http.HttpStatus
 
 @Service
 class TodoService(private val repo: TodoRepository) {
@@ -8,7 +10,9 @@ class TodoService(private val repo: TodoRepository) {
     fun getAll(): List<Todo> = repo.findAll()
 
     fun getById(id: Long): Todo =
-        repo.findById(id).orElseThrow { RuntimeException("Не найдено: $id") }
+        repo.findById(id).orElseThrow {
+            ResponseStatusException(HttpStatus.NOT_FOUND, "Todo $id не найден")
+        }
 
     fun create(todo: Todo): Todo = repo.save(todo)
 
@@ -22,5 +26,10 @@ class TodoService(private val repo: TodoRepository) {
         return repo.save(toSave)
     }
 
-    fun delete(id: Long) = repo.deleteById(id)
+    fun delete(id: Long) {
+        if (!repo.existsById(id)) {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Задача $id не найдена")
+        }
+        repo.deleteById(id)
+    }
 }

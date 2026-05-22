@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Golos Text', sans-serif;
-    background-image: url('/src/images/background.jpg');
+    background-image: url('./images/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -35,12 +35,8 @@ body {
     box-shadow: 3px 3px 0 #1a8cff44;
 }
 
-/* все кнопки */
-
-.todo-btn {
+.btn {
     padding: 10px 20px;
-    background-color: #1a8cff;
-    color: white;
     border: 3px solid #111;
     border-radius: 0;
     cursor: pointer;
@@ -52,78 +48,40 @@ body {
     letter-spacing: 0;
 }
 
-.todo-btn:hover {
+.btn:hover {
     transform: translate(-1px, -1px);
     box-shadow: 4px 4px 0 #111;
 }
 
-.todo-btn:active {
+.btn:active {
     transform: translate(2px, 2px);
     box-shadow: 1px 1px 0 #111;
+}
+
+/* Модификаторы кнопок */
+
+.todo-btn {
+    background-color: #1a8cff;
+    color: white;
 }
 
 .back-btn {
-    padding: 10px 20px;
     background: #f0f4f8;
     color: #111;
-    border: 3px solid #111;
-    border-radius: 0;
-    cursor: pointer;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    box-shadow: 3px 3px 0 #111;
-    transition: transform 0.1s, box-shadow 0.1s;
     margin-bottom: 19px;
 }
 
-.back-btn:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 #111;
-}
-
-.back-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 #111;
-}
-
 .delete-btn {
-    padding: 10px 20px;
     background: #e53935;
     color: white;
-    border: 3px solid #111;
-    border-radius: 0;
-    cursor: pointer;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    box-shadow: 3px 3px 0 #111;
-    transition: transform 0.1s, box-shadow 0.1s;
     margin-left: 10px;
 }
 
-.delete-btn:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 #111;
-}
-
-.delete-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 #111;
-}
-
 .page-btn {
-    padding: 10px 20px;
     background: #111;
     color: #fff;
-    border: 3px solid #111;
-    border-radius: 0;
-    cursor: pointer;
-    font-family: 'Unbounded', sans-serif;
     font-size: 12px;
-    font-weight: 600;
     box-shadow: 3px 3px 0 #1a8cff;
-    transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .page-btn:hover {
@@ -221,7 +179,7 @@ body {
 
 .todo-item-title {
     font-size: 18px;
-    font-weight: 1000;
+    font-weight: 900;
     color: #111;
     cursor: pointer;
     text-decoration: none;
@@ -268,7 +226,7 @@ body {
     background: #fff0f0;
 }
 
-/* кнопки внизу */
+/* пагинация */
 
 .pagination {
     display: flex;
@@ -287,7 +245,7 @@ body {
     color: #111;
 }
 
-/* всплывающее окно  */
+/* всплывающее окно */
 
 .modal-overlay {
     position: fixed;
@@ -347,6 +305,7 @@ body {
     text-align: center;
     font-size: 13px;
     line-height: 48px;
+    margin-bottom: 0;
 }
 
 /* детали задачи */
@@ -460,4 +419,14 @@ body {
     padding: 0;
     text-align: center;
     line-height: 48px;
+    margin-bottom: 0;
+}
+
+.error-message {
+    color: #e53935;
+    background: #fff0f0;
+    border: 2px solid #e53935;
+    padding: 12px 16px;
+    font-size: 14px;
+    margin: 20px;
 }

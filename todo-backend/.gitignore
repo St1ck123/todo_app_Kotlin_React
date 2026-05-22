@@ -1,12 +1,9 @@
-# Gradle build
 .gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
-# Kotlin
 .kotlin/
 
-# Spring / IDE
 .idea/
 *.iml
 *.ipr
@@ -17,6 +14,5 @@ out/
 .settings/
 .springBeans
 
-# Переменные окружения
 .env
 !.env.example

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Create({ onClose, onAdd }) {
+function CreateTodo({ onClose, onAdd }) {
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
 
@@ -23,6 +23,7 @@ function Create({ onClose, onAdd }) {
                         className="todo-input"
                         value={newTitle}
                         onChange={e => setNewTitle(e.target.value)}
+                        onKeyDown={e => e.key === 'Enter' && handleAdd()}
                         placeholder="Введите задачу..."
                         autoFocus
                     />
@@ -39,12 +40,12 @@ function Create({ onClose, onAdd }) {
                 </div>
 
                 <div className="modal-buttons">
-                    <button className="todo-btn" onClick={handleAdd}>Добавить</button>
-                    <button className="back-btn" onClick={onClose}>Отмена</button>
+                    <button className="btn todo-btn" onClick={handleAdd}>Добавить</button>
+                    <button className="btn back-btn" onClick={onClose}>Отмена</button>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Create;
+export default CreateTodo;

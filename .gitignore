@@ -2,16 +2,23 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+**/.DS_Store
 
-# IDE — IntelliJ / VS Code
+# IDE
 .idea/
 .vscode/
 *.iml
 
-# Переменные окружения
+# ENV
 .env
 !.env.example
 
-# Логи
+# Logs
 *.log
 npm-debug.log*
+yarn-*.log
+
+# Build artifacts
+todo-backend/build/
+todo-app/build/
+todo-app/node_modules/

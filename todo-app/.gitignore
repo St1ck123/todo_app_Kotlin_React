@@ -1,19 +1,15 @@
-# Зависимости — самое важное
 node_modules/
 .pnp
 .pnp.js
 
-# Сборка
 /build
 /coverage
 
-# Переменные окружения
 .env
 .env.local
 .env.*.local
 !.env.example
 
-# Мусор редакторов и ОС
 .DS_Store
 .idea/
 Dockerfile.save
